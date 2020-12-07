@@ -1,3 +1,29 @@
+## CS-Decrypt-AutoLogon
+
+**具有管理员权限**
+
+#### execute-assembly
+```
+beacon> help execute-assembly
+Use: execute-assembly [/path/to/file.exe] [arguments]
+
+Executes a local .NET process assembly on target. This command loads the CLR in a temporary
+process and loads the assembly into it.
+```
+#### enable AutoLogon
+
+https://live.sysinternals.com/
+
+
+```
+[HKEY_LOCAL_MACHINE\SECURITY\Policy\Secrets\DefaultPassword]
+[HKEY_LOCAL_MACHINE\SECURITY\Policy\Secrets\DefaultPassword\CupdTime]
+[HKEY_LOCAL_MACHINE\SECURITY\Policy\Secrets\DefaultPassword\CurrVal]
+[HKEY_LOCAL_MACHINE\SECURITY\Policy\Secrets\DefaultPassword\OldVal]
+[HKEY_LOCAL_MACHINE\SECURITY\Policy\Secrets\DefaultPassword\OupdTime]
+[HKEY_LOCAL_MACHINE\SECURITY\Policy\Secrets\DefaultPassword\SecDesc]
+```
+
 This tool can extract/decrypt the password that was stored in the LSA by SysInternals [AutoLogon](https://docs.microsoft.com/en-us/sysinternals/downloads/autologon). I made this to be used with [Cobalt Strike's execute-assembly](https://blog.cobaltstrike.com/2018/04/09/cobalt-strike-3-11-the-snake-that-eats-its-tail/):
 ![execute assembly screen shot](https://github.com/securesean/DecryptAutoLogon/blob/main/DecryptAutoLogon/exe-assm.jpg)
 Compiled with .NET 3.0 (Windows Vista's default)+. Needs to be run as SYSTEM. Not just as a high intgrity process because the special registry keys need are only visible to SYSTEM and can only be decyrpted by SYSTEM. 
